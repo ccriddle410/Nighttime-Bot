@@ -1,3 +1,4 @@
+import os
 import discord
 import asyncio
 from keep_alive import keep_alive
@@ -5,14 +6,19 @@ import datetime
 intents = discord.Intents(guilds=True, members=True)
 
 client = discord.Client(intents=intents)
+token = os.environ['token']
+guild_id = os.environ['guild_id']
+so_id = os.environ['so_id']
+me_id = os.environ['me_id']
+my_id = os.environ['my_id']
 
 async def my_background_task():
     await client.wait_until_ready()
 
-    guild = await client.fetch_guild(459081634231091202)
-    so = await guild.fetch_member(355445113737969675)
-    me = await guild.fetch_member(615182936555126826)
-    my = await guild.fetch_member(480144200361443349)   
+    guild = await client.fetch_guild(guild_id)
+    so = await guild.fetch_member(so_id)
+    me = await guild.fetch_member(me_id)
+    my = await guild.fetch_member(my_id)   
 
     while True:
         now = datetime.datetime.now()
@@ -74,7 +80,6 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-
 keep_alive()
 client.loop.create_task(my_background_task())
-client.run("ODM3MTIzMTIyOTI1OTI4NDY5.YIn9qQ.D2nJQdO8pvCmrWhPn208Pm99yts")
+client.run(token)
