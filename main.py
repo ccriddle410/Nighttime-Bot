@@ -25,7 +25,7 @@ async def my_background_task():
         hour = now.hour
         day = datetime.datetime.today().weekday()
 
-        # Sophie Block
+        # So Block
         if hour >= 4 and hour <= 10 and day <= 4:
             try:
               await so.edit(mute=True)
@@ -40,7 +40,7 @@ async def my_background_task():
           except:
               pass
 
-        # Metze Block
+        # Me Block
         if hour >= 4 and hour <= 10 and day <= 4:
           try:
             await me.edit(mute=True)
@@ -55,7 +55,7 @@ async def my_background_task():
           except:
               pass
 
-        # Mystic Block
+        # My Block
         if hour >= 7 and hour <= 13 and day <= 4:
           try:
             await my.edit(mute=True)
